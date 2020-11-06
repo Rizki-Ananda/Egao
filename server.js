@@ -17,7 +17,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 const app = express();
-const PORT = 3000;
+const PORT = 18320;
 
 app.use(express.static("public"));
 
