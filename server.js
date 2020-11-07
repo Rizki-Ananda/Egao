@@ -1,39 +1,28 @@
 const express = require("express");
 const multer = require("multer");
-const path = require("path");
 const Jimp = require("jimp");
 
-const uploadFolder = __dirname + "/uploads/images";
-
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, uploadFolder);
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
-
-var upload = multer({ storage: storage });
-
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 3000;
 
 app.use(express.static("public"));
 
+var storage = multer.memoryStorage();
+
+var upload = multer({ storage: storage });
+
+var data = null;
+
 app.post("/upload", upload.single("photo"), (req, res) => {
   if (req.file) {
-    res.json(req.file);
+    data = req.file.buffer.toString("base64");
+    res.json(data);
   } else throw "error";
 });
 
-app.get("/image/:filename", (req, res) => {
-  const file = `${uploadFolder}/${req.params.filename}`;
-  res.sendFile(file);
-});
-
 app.get("/edited/:filename", async (req, res) => {
-  const ORIGINAL_IMAGE = `${uploadFolder}/${req.params.filename}`;
+  const base64 = Buffer.from(data, "base64");
+  const ORIGINAL_IMAGE = base64;
 
   const LOGO = "./bg.png";
 
@@ -69,5 +58,3 @@ app.get("/edited/:filename", async (req, res) => {
 app.listen(PORT, () => {
   console.log("Listening at " + PORT);
 });
-
-//loveu
