@@ -4,15 +4,15 @@
     <title>Egao</title>
     <meta charset="utf-8" />
   </head>
-  <body>
-    <h1>Upload Image</h1>
+  <body style="background-color: black">
+    <h1 style="color: cornsilk">Upload Your Image</h1>
 
     <form action="/upload" method="post" enctype="multipart/form-data">
       <input type="file" accept="image/*" name="photo" />
       <button type="button" onclick="submitClick()">upload</button>
     </form>
 
-    <h1>Images</h1>
+    <h1 style="color: cornsilk">Images</h1>
     <div id="images"></div>
   </body>
 
