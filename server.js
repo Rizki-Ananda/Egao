@@ -28,7 +28,7 @@ var upload = multer({
     callback(null, true);
   },
   limits: {
-    fileSize: 2024 * 1024,
+    fileSize: 1512 * 1024,
   },
 }).single("photo");
 
@@ -193,7 +193,6 @@ app.get("/edited/:filename", async (req, res) => {
   logo.print(JakobsHandwriting24Black, 20, 11, detail);
   logo.print(SanafonMugi18Black, 506, 9, "その笑顔");
   logo.print(Consolas16Black, 375, 30, "sono-egao.herokuapp.com");
-  image.resize(750, Jimp.AUTO);
   image.crop(0, 0, 556, 556);
   logo
     .composite(image, 22, 58, [
