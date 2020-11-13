@@ -1,6 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 const Jimp = require("jimp");
+var path = require("path");
 const { FontManager } = require("./font-manager");
 
 const app = express();
@@ -10,18 +11,54 @@ app.use(express.static("public"));
 
 var storage = multer.memoryStorage();
 
-var upload = multer({ storage: storage });
+var upload = multer({
+  //multer settings
+  storage: storage,
+  fileFilter: function (req, file, callback) {
+    var ext = path.extname(file.originalname);
+    if (
+      ext !== ".png" &&
+      ext !== ".jpg" &&
+      ext !== ".png" &&
+      ext !== ".jpeg" &&
+      ext !== ".JPG"
+    ) {
+      return callback(new Error("Only images are allowed"));
+    }
+    callback(null, true);
+  },
+  limits: {
+    fileSize: 3024 * 3024,
+  },
+}).single("photo");
 
 var data = null;
 var x = null;
 var y = 0;
 
-app.post("/upload", upload.single("photo"), (req, res) => {
+app.post("/upload", function (req, res) {
+  upload(req, res, function (err) {
+    if (err instanceof multer.MulterError) {
+      console.log("error", err);
+      res.json(err);
+    } else if (err) {
+      console.log(err);
+      res.json("err");
+    } else {
+      data = req.file.buffer.toString("base64");
+      res.json(data);
+    }
+
+    // Everything went fine.
+  });
+});
+
+/* app.post("/upload", upload, (req, res) => {
   if (req.file) {
     data = req.file.buffer.toString("base64");
     res.json(data);
   } else throw "error";
-});
+}); */
 
 app.get("/edited/:filename", async (req, res) => {
   const base64 = Buffer.from(data, "base64");

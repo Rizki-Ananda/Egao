@@ -2,43 +2,44 @@
 <html lang="en">
   <head>
     <title>Egao</title>
-    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body style="background-color: black">
-    <h1 style="color: cornsilk">Upload Your Image</h1>
+  <body>
+    <header>
+      <div class="greeting">
+        <h3>Hi</h3>
+      </div>
+      <br />
+    </header>
+    <div class="gambar" id="images"></div>
+    <h1>Upload Your Image</h1>
 
     <form action="/upload" method="post" enctype="multipart/form-data">
-      <input type="file" accept="image/*" name="photo" />
-      <button type="button" onclick="submitClick()">upload</button>
+      <div id="wrap-input">
+        <label id="labelinput" for="macan">Choose a file : </label>
+        <label id="labelvalue" for="macan"
+          >. . . . . . . . . . . . . .. . . . . . . . .
+        </label>
+      </div>
+      <input
+        type="file"
+        accept="image/*"
+        name="photo"
+        id="macan"
+        class="inputfile"
+        multiple
+        onchange="showname()"
+      /><br />
+      <button type="button" onclick="kambing()">Upload</button>
     </form>
-
-    <h1 style="color: cornsilk">Images</h1>
-    <div id="images"></div>
   </body>
 
+  <script src="./assets/js/index.js"></script>
   <script>
-    const submitClick = () => {
-      const formData = new FormData();
-      const fileField = document.querySelector('input[type="file"]');
-
-      formData.append("photo", fileField.files[0]);
-
-      fetch("/upload", {
-        method: "POST",
-        body: formData,
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          console.log("Success:", result);
-          const images = document.getElementById("images");
-          const img = document.createElement("img");
-          img.src = `/edited/${result.filename}`;
-
-          images.appendChild(img);
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    };
+    function showname() {
+      var name = document.getElementById("macan");
+      document.getElementById("labelvalue").innerHTML = name.files.item(0).name;
+    }
   </script>
 </html>

@@ -1,0 +1,103 @@
+@font-face {
+  font-family: "MPLUSRounded1c";
+  src: url("../font/MPLUSRounded1c-Light.ttf");
+}
+
+.gambar {
+  height: 400px;
+}
+
+header {
+  display: inline;
+}
+
+.greeting {
+  width: 40px;
+  height: 30px;
+  background-color: #4d4d4d;
+}
+
+h1 {
+  font-size: 100px;
+  font-family: "MPLUSRounded1c";
+}
+
+h3 {
+  text-align: center;
+  color: #dedede;
+  font-family: "MPLUSRounded1c";
+}
+
+body {
+  margin: 20px;
+  background-color: #f8f9fc;
+}
+
+img {
+  width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 1000px) {
+  h1 {
+    font-size: 30px;
+    font-family: "MPLUSRounded1c";
+  }
+
+  .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  #wrap-input {
+    border-style: dashed;
+    border-width: 1px;
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px 0px 5px 0px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #labelinput,
+  #labelvalue {
+    cursor: pointer;
+    color: #4d4d4d;
+    font-family: "MPLUSRounded1c";
+    margin-left: 10px;
+  }
+
+  button {
+    border-style: dashed;
+    border-width: 1px;
+    border-radius: 5px;
+    width: 30%;
+    padding: 5px 0px 5px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 0px;
+  }
+
+  img {
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fcefe5;
+    border: 1px solid #dedede;
+    -webkit-box-shadow: 1px 1px 1px 0px rgba(204, 204, 204, 0.35);
+    -moz-box-shadow: 1px 1px 1px 0px rgba(204, 204, 204, 0.35);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .gambar {
+    height: 400px;
+  }
+}
