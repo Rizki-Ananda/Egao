@@ -28,7 +28,7 @@ var upload = multer({
     callback(null, true);
   },
   limits: {
-    fileSize: 3024 * 3024,
+    fileSize: 2024 * 2024,
   },
 }).single("photo");
 
