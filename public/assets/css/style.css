@@ -1,7 +1,4 @@
-@font-face {
-  font-family: "MPLUSRounded1c";
-  src: url("../font/MPLUSRounded1c-Light.ttf");
-}
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap");
 
 .gambar {
   height: 400px;
@@ -19,13 +16,13 @@ header {
 
 h1 {
   font-size: 100px;
-  font-family: "MPLUSRounded1c";
+  font-family: "M PLUS Rounded 1c", sans-serif;
 }
 
 h3 {
   text-align: center;
   color: #dedede;
-  font-family: "MPLUSRounded1c";
+  font-family: "M PLUS Rounded 1c", sans-serif;
 }
 
 body {
@@ -43,7 +40,7 @@ img {
 @media screen and (max-width: 1000px) {
   h1 {
     font-size: 30px;
-    font-family: "MPLUSRounded1c";
+    font-family: "M PLUS Rounded 1c", sans-serif;
   }
 
   .inputfile {
@@ -69,7 +66,7 @@ img {
   #labelvalue {
     cursor: pointer;
     color: #4d4d4d;
-    font-family: "MPLUSRounded1c";
+    font-family: "M PLUS Rounded 1c", sans-serif;
     margin-left: 10px;
   }
 
@@ -81,11 +78,12 @@ img {
     padding: 5px 0px 5px 0px;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
     outline: 1px dotted #000;
     outline: -webkit-focus-ring-color auto 0px;
   }
 
-  img {
+  .imgview {
     width: 300px;
     display: block;
     margin-left: auto;
@@ -95,6 +93,30 @@ img {
     -webkit-box-shadow: 1px 1px 1px 0px rgba(204, 204, 204, 0.35);
     -moz-box-shadow: 1px 1px 1px 0px rgba(204, 204, 204, 0.35);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .imgload {
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    width: 100px;
+    transform: translate(-50%, -35%);
+  }
+
+  .imgloadmute {
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    width: 0.1px;
+    transform: translate(-50%, -35%);
+    opacity: 0;
+  }
+
+  .load {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -30%);
   }
 
   .gambar {

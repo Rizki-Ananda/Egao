@@ -28,7 +28,7 @@ var upload = multer({
     callback(null, true);
   },
   limits: {
-    fileSize: 1512 * 1024,
+    fileSize: 3024 * 3024,
   },
 }).single("photo");
 
@@ -45,23 +45,20 @@ app.post("/upload", function (req, res) {
       console.log(err);
       res.json("err");
     } else {
-      data = req.file.buffer.toString("base64");
-      res.json(data);
+      data = [req.file.buffer.toString("base64"), req.file.size];
+      res.json(req.file);
     }
-
-    // Everything went fine.
   });
 });
 
-/* app.post("/upload", upload, (req, res) => {
-  if (req.file) {
-    data = req.file.buffer.toString("base64");
-    res.json(data);
-  } else throw "error";
-}); */
+app.get("/load/load.svg", async (req, res) => {
+  const image = __dirname + "/public/assets/svg/load.svg";
+  res.sendFile(image);
+});
 
 app.get("/edited/:filename", async (req, res) => {
-  const base64 = Buffer.from(data, "base64");
+  req.params.filename = data[1];
+  const base64 = Buffer.from(data[0], "base64");
   const ORIGINAL_IMAGE = base64;
 
   let originalFrame = new Jimp(600, 745, "white", (err, image) => {
@@ -174,7 +171,7 @@ app.get("/edited/:filename", async (req, res) => {
     y = 1;
     setTimeout(() => {
       y = 0;
-    }, 20000);
+    }, 50000);
   }
 
   logo.print(
@@ -193,7 +190,11 @@ app.get("/edited/:filename", async (req, res) => {
   logo.print(JakobsHandwriting24Black, 20, 11, detail);
   logo.print(SanafonMugi18Black, 506, 9, "その笑顔");
   logo.print(Consolas16Black, 375, 30, "sono-egao.herokuapp.com");
-  image.crop(0, 0, 556, 556);
+
+  image.bitmap.height >= image.bitmap.width
+    ? image.crop(0, 0, image.bitmap.width, image.bitmap.width)
+    : image.crop(0, 0, image.bitmap.height, image.bitmap.height);
+  image.resize(556, 556);
   logo
     .composite(image, 22, 58, [
       {

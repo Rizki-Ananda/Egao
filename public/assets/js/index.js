@@ -1,7 +1,13 @@
+var load = document.getElementById("load");
+
 const kambing = () => {
   if (document.getElementById("macan").files.length == 0) {
-    console.log("no files selected");
-  } else submitClick();
+    alert("no files selected");
+  } else {
+    load.className = "imgload";
+    load.src = "load/load.svg";
+    submitClick();
+  }
 };
 
 const submitClick = () => {
@@ -16,17 +22,19 @@ const submitClick = () => {
   })
     .then((response) => response.json())
     .then((result) => {
+      console.log(result);
       if (result.name == "MulterError") {
         alert(result.message);
       } else if (result == "err") {
         alert("Only images are allowed");
       } else {
-        console.log("Success:", result);
+        console.log(result.filename);
         const images = document.getElementById("images");
         const img = document.createElement("img");
-        img.src = `/edited/${result.filename}`;
-
+        img.classList.add("imgview");
+        img.src = `/edited/${result.size}`;
         images.appendChild(img);
+        load.className = "imgloadmute";
       }
     })
     .catch((error) => {
