@@ -1,5 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap");
 
+#light {
+  background-color: #f8f9fc;
+}
+
+#dark {
+  background-color: #292929;
+}
+
+#dark .greeting {
+  background-color: #f8f9fc;
+}
+
+#dark h1 {
+  color: #f8f9fc;
+}
+
+#dark h3 {
+  color: #4d4d4d;
+}
+
+#dark #labelinput {
+  color: #f8f9fc;
+}
+
+#dark #labelvalue {
+  color: #f8f9fc;
+}
+
+body {
+  margin: 20px;
+}
+
 .gambar {
   height: 400px;
 }
@@ -25,11 +57,6 @@ h3 {
   font-family: "M PLUS Rounded 1c", sans-serif;
 }
 
-body {
-  margin: 20px;
-  background-color: #f8f9fc;
-}
-
 img {
   width: 500px;
   display: block;
@@ -37,10 +64,32 @@ img {
   margin-right: auto;
 }
 
+#labelvalue {
+  cursor: pointer;
+  color: #4d4d4d;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  margin-left: 10px;
+}
+
+#labelinput {
+  cursor: pointer;
+  color: #4d4d4d;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  margin-left: 10px;
+}
+
 @media screen and (max-width: 1000px) {
   h1 {
     font-size: 30px;
     font-family: "M PLUS Rounded 1c", sans-serif;
+  }
+
+  .wpmoon {
+    position: absolute;
+    margin-right: 20px;
+    top: 0%;
+    right: 0%;
+    transform: translate(0%, 0%, 0%);
   }
 
   .inputfile {
@@ -52,8 +101,13 @@ img {
     z-index: -1;
   }
 
+  #dark #wrap-input {
+    color: #f8f9fc;
+  }
+
   #wrap-input {
     border-style: dashed;
+    color: #4d4d4d;
     border-width: 1px;
     border-radius: 5px;
     width: 100%;
@@ -62,12 +116,10 @@ img {
     margin-right: auto;
   }
 
-  #labelinput,
-  #labelvalue {
-    cursor: pointer;
-    color: #4d4d4d;
-    font-family: "M PLUS Rounded 1c", sans-serif;
-    margin-left: 10px;
+  #dark button {
+    color: rgb(224, 224, 224);
+    border-color: rgb(224, 224, 224);
+    background-color: rgb(88, 88, 88);
   }
 
   button {
@@ -75,12 +127,23 @@ img {
     border-width: 1px;
     border-radius: 5px;
     width: 30%;
+    border-color: rgb(88, 88, 88);
+    color: rgb(88, 88, 88);
+    background-color: rgb(224, 224, 224);
     padding: 5px 0px 5px 0px;
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
     outline: 1px dotted #000;
     outline: -webkit-focus-ring-color auto 0px;
+  }
+
+  #dark .imgview {
+    background: #fcefe5;
+    border: 1px solid #dedede;
+    -webkit-box-shadow: 1px 1px 1px 0px rgba(255, 255, 255, 0.35);
+    -moz-box-shadow: 1px 1px 1px 0px rgba(255, 255, 255, 0.35);
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
   }
 
   .imgview {

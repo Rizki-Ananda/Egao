@@ -10,6 +10,9 @@
       <div class="greeting">
         <h3>Hi</h3>
       </div>
+      <div class="wpmoon">
+        <h3 id="moon" onclick="setDarkmode()">🌑</h3>
+      </div>
       <br />
     </header>
     <div class="gambar" id="images"><img id="load" /></div>
@@ -37,6 +40,19 @@
 
   <script src="./assets/js/index.js"></script>
   <script>
+    var dark = true;
+    function setDarkmode() {
+      if (dark) {
+        document.body.setAttribute("id", "dark");
+        document.getElementById("moon").innerHTML = "🌕";
+        dark = false;
+      } else {
+        document.body.setAttribute("id", "light");
+        document.getElementById("moon").innerHTML = "🌑";
+        dark = true;
+      }
+    }
+
     function showname() {
       var name = document.getElementById("macan");
       document.getElementById("labelvalue").innerHTML = name.files.item(0).name;
