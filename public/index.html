@@ -8,10 +8,10 @@
   <body>
     <header>
       <div class="greeting">
-        <h3>Hi</h3>
+        <h3 onclick="greeting()">Hi</h3>
       </div>
       <div class="wpmoon">
-        <h3 id="moon" onclick="setDarkmode()">🌑</h3>
+        <h3 id="moon" onclick="toggleDarkMode()">🌚</h3>
       </div>
       <br />
     </header>
@@ -40,17 +40,26 @@
 
   <script src="./assets/js/index.js"></script>
   <script>
-    var dark = true;
-    function setDarkmode() {
-      if (dark) {
-        document.body.setAttribute("id", "dark");
-        document.getElementById("moon").innerHTML = "🌕";
-        dark = false;
+    if (localStorage.getItem("preferredTheme") == "dark") toggleDarkMode();
+
+    function toggleDarkMode() {
+      const themeBtn = document.getElementById("moon");
+      let emoticon = "";
+      let isDark = document.body.classList.toggle("darkmode");
+
+      if (isDark) {
+        emoticon = "🌝";
+        localStorage.setItem("preferredTheme", "dark");
       } else {
-        document.body.setAttribute("id", "light");
-        document.getElementById("moon").innerHTML = "🌑";
-        dark = true;
+        emoticon = "🌚";
+        localStorage.removeItem("preferredTheme");
       }
+
+      themeBtn.innerHTML = emoticon;
+    }
+
+    function greeting() {
+      alert("1 + 5 = 🍓");
     }
 
     function showname() {

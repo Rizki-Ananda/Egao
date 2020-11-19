@@ -171,6 +171,7 @@ app.get("/edited/:filename", async (req, res) => {
     y = 1;
     setTimeout(() => {
       y = 0;
+      data = null;
     }, 50000);
   }
 

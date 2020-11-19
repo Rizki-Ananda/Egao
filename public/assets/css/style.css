@@ -1,35 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap");
 
-#light {
-  background-color: #f8f9fc;
-}
-
-#dark {
+.darkmode {
   background-color: #292929;
 }
 
-#dark .greeting {
+.darkmode .greeting {
   background-color: #f8f9fc;
 }
 
-#dark h1 {
+.darkmode h1 {
   color: #f8f9fc;
 }
 
-#dark h3 {
+.darkmode h3 {
   color: #4d4d4d;
 }
 
-#dark #labelinput {
+.darkmode #labelinput {
   color: #f8f9fc;
 }
 
-#dark #labelvalue {
+.darkmode #labelvalue {
   color: #f8f9fc;
 }
 
 body {
   margin: 20px;
+  background-color: #f8f9fc;
 }
 
 .gambar {
@@ -55,6 +52,7 @@ h3 {
   text-align: center;
   color: #dedede;
   font-family: "M PLUS Rounded 1c", sans-serif;
+  cursor: pointer;
 }
 
 img {
@@ -76,6 +74,113 @@ img {
   color: #4d4d4d;
   font-family: "M PLUS Rounded 1c", sans-serif;
   margin-left: 10px;
+}
+
+h1 {
+  font-size: 30px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
+.wpmoon {
+  position: absolute;
+  margin-right: 20px;
+  top: 0%;
+  right: 0%;
+  transform: translate(0%, 0%, 0%);
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.darkmode #wrap-input {
+  color: #f8f9fc;
+}
+
+#wrap-input {
+  border-style: dashed;
+  color: #4d4d4d;
+  border-width: 1px;
+  border-radius: 5px;
+  width: 100%;
+  padding: 5px 0px 5px 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.darkmode button {
+  color: rgb(224, 224, 224);
+  border-color: rgb(224, 224, 224);
+  background-color: rgb(88, 88, 88);
+}
+
+button {
+  border-style: dashed;
+  border-width: 1px;
+  border-radius: 5px;
+  width: 30%;
+  border-color: rgb(88, 88, 88);
+  color: rgb(88, 88, 88);
+  background-color: rgb(224, 224, 224);
+  padding: 5px 0px 5px 0px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 0px;
+}
+
+.darkmode .imgview {
+  background: #fcefe5;
+  border: 1px solid #dedede;
+  -webkit-box-shadow: 1px 1px 1px 0px rgba(255, 255, 255, 0.35);
+  -moz-box-shadow: 1px 1px 1px 0px rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+}
+
+.imgview {
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fcefe5;
+  border: 1px solid #dedede;
+  -webkit-box-shadow: 1px 1px 1px 0px rgba(204, 204, 204, 0.35);
+  -moz-box-shadow: 1px 1px 1px 0px rgba(204, 204, 204, 0.35);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.imgload {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  width: 100px;
+  transform: translate(-50%, -35%);
+}
+
+.imgloadmute {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  width: 0.1px;
+  transform: translate(-50%, -35%);
+  opacity: 0;
+}
+
+.load {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -30%);
+}
+
+.gambar {
+  height: 400px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -101,7 +206,7 @@ img {
     z-index: -1;
   }
 
-  #dark #wrap-input {
+  .darkmode #wrap-input {
     color: #f8f9fc;
   }
 
@@ -116,7 +221,7 @@ img {
     margin-right: auto;
   }
 
-  #dark button {
+  .darkmode button {
     color: rgb(224, 224, 224);
     border-color: rgb(224, 224, 224);
     background-color: rgb(88, 88, 88);
@@ -138,7 +243,7 @@ img {
     outline: -webkit-focus-ring-color auto 0px;
   }
 
-  #dark .imgview {
+  .darkmode .imgview {
     background: #fcefe5;
     border: 1px solid #dedede;
     -webkit-box-shadow: 1px 1px 1px 0px rgba(255, 255, 255, 0.35);
