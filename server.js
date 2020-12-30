@@ -61,25 +61,25 @@ app.get("/edited/:filename", async (req, res) => {
   const base64 = Buffer.from(data[0], "base64");
   const ORIGINAL_IMAGE = base64;
 
-  let originalFrame = new Jimp(600, 745, "white", (err, image) => {
+  const originalFrame = new Jimp(600, 745, "white", (err, image) => {
     if (err) throw err;
   });
 
   let kotoba = [
+    "Lala selamat ulang tahun!!",
     "Halo",
     "Halo, Nama saya Nanda!",
+    "Mulai besok akan semakin sulit!",
+    "Kemudian akan baik!",
     "Apa yang akan kita lakukan?",
     "Maaf!",
-    "Saya mengalami kecelakaan!",
-    "Saya berkibar!",
     "Apa golongan darah anda Aku tipe O!",
     "Apakah anda memiliki alergi?",
-    "1 + 5 = 🍓",
     "Dimana yang sakit?",
     "Selamat datang!",
     "Mohon tunggu sebentar, siapa kamu?",
     "ke mana kamu mau pergi?",
-    "Saya ingin berbicara dengan xxx.",
+    "Saya ingin berbicara dengan Lala.",
     "Apa tujuan perjalanan ini?",
     "ini dia!",
     "Bisakah saya minta kopi?",
@@ -91,19 +91,17 @@ app.get("/edited/:filename", async (req, res) => {
     "Silakan datang kapan saja!",
     "Ayo jalan-jalan saat cuaca cerah!",
     "Kapan kamu datang",
-    "Saya tidak bisa berbicara bahasa Jepang!",
     "Berapa usia anda sekarang",
-    "『生活』 Bisakah kamu membaca kanji ini?",
-    "oh, xxx. Apa kabar?",
+    "oh, Lala. Apa kabar?",
     "Mengapa?",
     "Mengapa anda tidak datang ke tempat itu?",
     "Apa nama tempat itu?",
     "anda memiliki buku dan pensil di tas anda, bukan?",
-    "Apa ada xx di bawah meja?",
-    "Apa ada xx di atas meja?",
-    "Bagaimana kabarmu, xx?",
-    "Ini adalah situs web untuk xxx!",
-    "xxx cantik, bukan?",
+    "Apa ada Moli di bawah meja?",
+    "Apa ada Moli di atas meja?",
+    "Bagaimana kabarmu, Moli?",
+    "Ini adalah situs web untuk Lala!",
+    "Lala cantik, bukan?",
     "Saya orang Indonesia!",
     "Terima kasih atas kerja keras anda!",
     "Selamat datang!",
@@ -113,10 +111,8 @@ app.get("/edited/:filename", async (req, res) => {
     "Disini panas!",
     "Apa kamu punya makanan favorit?",
     "Apakah anda memiliki makanan yang tidak anda sukai?",
-    "Apa yang diinginkan xxx?",
-    "anda tidak bisa bolos sekolah!",
+    "Apa yang diinginkan Lala?",
     "Dapatkah saya duduk di sini?",
-    "Tolong bacalah buku!",
     "Apa keluhan anda?",
     "Saya tidak berpikir begitu?",
   ];
@@ -166,7 +162,15 @@ app.get("/edited/:filename", async (req, res) => {
     Jimp.loadFont(FontManager.JakobsHandwriting36Black),
   ]);
 
-  if (y == 0) {
+  if (y == 0 && time.getDate() == 31 && time.getMonth() == 11) {
+    x = 0;
+    y = 1;
+    setTimeout(() => {
+      y = 0;
+      data = null;
+    }, 50000);
+  } else {
+    kotoba.shift();
     x = Math.floor(Math.random() * (kotoba.length - 0));
     y = 1;
     setTimeout(() => {

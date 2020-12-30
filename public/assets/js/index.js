@@ -22,7 +22,6 @@ const submitClick = () => {
   })
     .then((response) => response.json())
     .then((result) => {
-      console.log(result);
       if (result.name == "MulterError") {
         alert(result.message);
       } else if (result == "err") {
