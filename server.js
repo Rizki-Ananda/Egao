@@ -171,6 +171,8 @@ app.get("/edited/:filename", async (req, res) => {
     }, 50000);
   } else {
     kotoba.shift();
+  }
+  if (y == 0) {
     x = Math.floor(Math.random() * (kotoba.length - 0));
     y = 1;
     setTimeout(() => {
